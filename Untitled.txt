@@ -1,0 +1,15 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+class WeatherGetter():
+
+    def __init__(self):
+        # Let's set our secrets and keys from the .env file
+        # as environment variables.
+        self.BASE_URL = 'https://api.darksky.net'
+        self.token = os.getenv('DARKSKY_KEY')
+
+        if len(self.token) == 0:
+            raise ValueError('Missing API key!')
